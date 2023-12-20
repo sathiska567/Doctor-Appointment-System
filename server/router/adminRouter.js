@@ -1,5 +1,5 @@
 const express = require("express");
-const {  getAllUsersController,  getAllDoctorsController,  changeAccountStatusController,} = require("../controller/adminCtrl");
+const {  getAllUsersController,  getAllDoctorsController,  changeAccountStatusController,deleteRequestController} = require("../controller/adminCtrl");
 const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
@@ -12,5 +12,9 @@ router.get("/getAllDoctors", getAllDoctorsController);
 
 //POST ACCOUNT STATUS
 router.post("/changeAccountStatus" ,changeAccountStatusController );
+
+
+// DELETE USERS BY ADMIN
+router.post("/deleteRequest",deleteRequestController)
 
 module.exports = router;

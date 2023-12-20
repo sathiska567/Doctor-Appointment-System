@@ -77,7 +77,7 @@ const Doctors = () => {
       render: (text, record) => (
         <div className="d-flex">
       
-          {record.status === "pending" ? (
+          {/* {record.status === "pending" ? (
             <button
               className="btn btn-success"
               onClick={() => handleAccountStatus(record._id , "Approved")}
@@ -86,7 +86,7 @@ const Doctors = () => {
             </button>
           ) : (
             <button className="btn btn-danger">Reject</button>
-          )}
+          )} */}
 
             
             <button className="btn btn-success" onClick={() => NavigateDetailsPage(record)}> View </button>

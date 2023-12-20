@@ -76,8 +76,29 @@ const changeAccountStatusController = async(req,res)=>{
 
 }
 
+// Delete admin controller
+const deleteRequestController = async(req,res)=>{
+   const {userId} = req.body;         //must want to same req.body passing name and here value getting name.
+   console.log(userId);
+   try {
+
+    const deletedUser = await doctorModel.deleteOne({_id : userId})
+     
+     res.status(200).send({
+       message : "Delete successfully",       
+     })    
+   }    
+   catch (error) {
+    res.status(400).send({
+      message : "Delete Controller have error",
+      error
+    })
+   }
+}
+
 
 module.exports = {
   getAllDoctorsController,
   changeAccountStatusController,
+  deleteRequestController,
 };

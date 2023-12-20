@@ -36,8 +36,7 @@ export default function ApplyPlayerDetails() {
 
 
     try {
-      const approve = await axios.post("http://localhost:8080/api/v1/admin/changeAccountStatus", {doctorId : recordId , status : status})
-      console.log(approve);
+      const deletedRequest = await axios.post("http://localhost:8080/api/v1/admin/deleteRequest", {userId : recordId})
       navigate("/get-all-notification")
 
     } catch (error) {
@@ -61,7 +60,7 @@ export default function ApplyPlayerDetails() {
         <p>status: {details.status}</p>
 
 
-{/* Handle aprove button and delete */}
+   {/* Handle aprove button and delete */}
         {
         
         details.status === "pending" ? 
@@ -70,9 +69,14 @@ export default function ApplyPlayerDetails() {
          
         :
 
-        <button className="btn btn-danger" onClick={() => handleDelete(details._id , "pending")}> Delete </button>
+        <button className="btn btn-danger" onClick={() => handleDelete(details._id)}> Delete </button>
         
       
+         }
+
+         {
+                  <button className="btn btn-danger" onClick={() => handleDelete(details._id)}> pending </button>
+
          }
         
 
