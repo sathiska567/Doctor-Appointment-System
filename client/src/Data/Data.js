@@ -41,7 +41,12 @@ export const adminMenu = [
           name: "Notifications",
           path: "/get-all-notification",
           icon: "fa-solid fa-user-doctor",
-        },
+        },,
+        // {
+        //   // name: "View Player Details",
+        //   path: "/details",
+        //   icon: "fa-solid fa-right-from-bracket",
+        // },
         {
           name: "Admin Profile",
           path: "/profile",
@@ -51,5 +56,5 @@ export const adminMenu = [
           name: "Logout",
           path: "/logout",
           icon: "fa-solid fa-right-from-bracket",
-        },
+        }
       ];

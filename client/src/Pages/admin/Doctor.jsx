@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./../../Components/LayoutHome";
 import axios from "axios";
 import { message, Table } from "antd";
 import LayoutHome from "./../../Components/LayoutHome";
+import { useNavigate } from "react-router-dom";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
+  const navigate = useNavigate();
+
+
   //getUsers
   const getDoctors = async () => {
     try {
@@ -19,6 +22,7 @@ const Doctors = () => {
     }
   };
 
+  // hanlde aprove account status
   const handleAccountStatus = async (recordId , status) => {
     window.location.reload();
     try {
@@ -28,11 +32,18 @@ const Doctors = () => {
       )
       
       console.log(recordId);
+      navigate("/get-all-notification")
 
     } catch (error) {
       console.log(error);
     }
   };
+
+  // handle navigate another page
+  const NavigateDetailsPage = (record)=>{
+    // localStorage.setItem("viewing doctor id",record)
+    navigate("/details",{state:{record : record}})
+  }
 
   useEffect(() => {
     getDoctors();
@@ -76,9 +87,17 @@ const Doctors = () => {
           ) : (
             <button className="btn btn-danger">Reject</button>
           )}
+
+            
+            <button className="btn btn-success" onClick={() => NavigateDetailsPage(record)}> View </button>
+            
+          
         </div>
+
+        
+
       ),
-    },
+    }
   ];
 
   return (

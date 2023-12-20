@@ -8,6 +8,7 @@ import ApplyDoctor from "./Pages/ApplyDoctor";
 import ViewPlayer from "./Pages/AcceptPlayer";
 import NotificationPage from "./Pages/NotificationPage";
 import Doctors from "./Pages/admin/Doctor";
+import ApplyPlayerDetails from "./Pages/ApplyPlayerDetails";
 function App() {
   return (
     <>
@@ -34,12 +35,22 @@ function App() {
             </ProtectedRoute>
           } />
 
+
+          {/* Applying player details */}
+          <Route path="/details" element={
+            <ProtectedRoute>
+                <ApplyPlayerDetails/>
+            </ProtectedRoute>
+          } />
+
+         {/* All user Login */}
           <Route path="/login" element={
               <PublicRoute>
                 <Login />
               </PublicRoute>
           } />
           
+          {/* All user registration */}
           <Route path="/register" element={
              <PublicRoute>
                <Register />
@@ -47,6 +58,7 @@ function App() {
           } />
 
 
+          {/* Doctor notification */}
           <Route path="/get-all-notification" element={
              <ProtectedRoute>
                <Doctors />

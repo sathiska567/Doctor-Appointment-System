@@ -1,24 +1,7 @@
 const doctorModel = require("../models/doctorModel");
 const userModel = require("../models/userModel");
 
-// const getAllUsersController = async (req, res) => {
-//   try {
-//     const users = await userModel.find({});
-//     res.status(200).send({
-//       success: true,
-//       message: "users data list",
-//       data: users,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send({
-//       success: false,
-//       message: "erorr while fetching users",
-//       error,
-//     });
-//   }
-// };
-
+// All Doctor Details
 const getAllDoctorsController = async (req, res) => {
   try {
 
@@ -45,7 +28,7 @@ const changeAccountStatusController = async(req,res)=>{
      
         try {
  
-          console.log(req.body);
+          // console.log(req.body);
 
          const {doctorId , status} = req.body
 
@@ -55,21 +38,21 @@ const changeAccountStatusController = async(req,res)=>{
          
          console.log(doctor);
 
-         const user = await userModel.findOne({_id:doctor.id})  
-         
-         const notification = user.notification
+        //  const user = await doctorModel.findOne({_id:doctor.id})  
+        //  console.log(user);
+        //  const notification = user.notification
 
-         notification.push({
+        //  notification.push({
 
-                type : 'doctor-account-updated',
-                message : `Your Doctor account has ${status}`,
-                onClickPath : '/notification'
+        //         type : 'doctor-account-updated',
+        //         message : "Your account updated",
+        //         onClickPath : '/notification'
 
-         })
+        //  })
 
 
-         user.isDoctor === 'approved' ? true : false
-         await user.save()
+        //  user.isDoctor === 'approved' ? true : false
+        //  await user.save()
 
          res.status(201).send({
                 success : true,

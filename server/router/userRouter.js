@@ -12,9 +12,6 @@ router.post("/login", loginController);
 //REGISTER || POST
 router.post("/register", registerController);
 
-// AUTH || POST
-router.get("/getUser",authController)
-
 
 // APPLY DOCTOR || POST
 router.post("/apply-doctor",applyDoctorController)
