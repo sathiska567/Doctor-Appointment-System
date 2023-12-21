@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LayoutHome from '../Components/LayoutHome'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Col, Form, Input, Row, Table, message,Spin } from 'antd';
@@ -7,10 +7,14 @@ import axios from 'axios';
 export default function ApplyPlayerDetails() {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  const [userData , setUserData] = useState();
 
   const details = location.state.record;
-
+  
+  const ApplyPositionDetails= async()=>{
+       console.log(details);
+       setUserData(details);
+  }
 
   // handle approve button
  const handleApprove = async(recordId , status)=>{
@@ -61,7 +65,7 @@ export default function ApplyPlayerDetails() {
     {
       title : "First name",
       render :(text,record)=>{
-         <span>kamalalala</span>
+         <span>{record}</span>
       }
     },
     {
@@ -73,23 +77,28 @@ export default function ApplyPlayerDetails() {
   ]
 
 
+  useEffect(()=>{
+    ApplyPositionDetails();
+  },[])
+
+
   return (
 
     <div>
         <LayoutHome>
         <h1 className="text-center m-3">{details.firstName} Details</h1>
-        <p>{details.firstName + " "+  details.lastName } </p>
+        {/* <p>{details.firstName + " "+  details.lastName } </p>
         <p>{details.email}</p>
         <p>{details.address}</p>
         <p>{details.experience}</p>
         <p>{details.feesPerConsaltation}</p>
         <p>{details.phone}</p>
         <p>{details.specialization}</p>
-        <p>status: {details.status}</p>
+        <p>status: {details.status}</p> */}
 
+      
 
-
-        <Table columns={columns} />
+        <Table columns={columns}  />
 
    {/* Handle aprove button and delete */}
         {
