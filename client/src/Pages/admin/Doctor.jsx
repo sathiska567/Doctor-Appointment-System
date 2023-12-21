@@ -13,6 +13,7 @@ const Doctors = () => {
   const getDoctors = async () => {
     try {
       const res = await axios.get("http://localhost:8080/api/v1/admin/getAllDoctors");
+      console.log(res);
 
       if (res.data.success) {
         setDoctors(res.data.data);

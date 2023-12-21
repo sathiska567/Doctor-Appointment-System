@@ -7,13 +7,18 @@ import axios from 'axios';
 export default function ApplyPlayerDetails() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [userData , setUserData] = useState();
+  const [userData, setUserData] = useState([]); // Initialize with an array
 
   const details = location.state.record;
   
   const ApplyPositionDetails= async()=>{
-       console.log(details);
-       setUserData(details);
+       try {
+         console.log(details);
+         setUserData([details]);
+        
+       } catch (error) {
+         message("Error while occure inside the Apply Position Details")
+       }
   }
 
   // handle approve button
@@ -61,20 +66,25 @@ export default function ApplyPlayerDetails() {
   }
 
 
-  const columns = [
+  const Fcolumns = [
     {
-      title : "First name",
-      render :(text,record)=>{
-         <span>{record}</span>
-      }
+      title : "Full Name",
+     render :(text,record)=>(
+      <span>{record.firstName + " " + record.lastName}</span>
+     )
+      
     },
     {
-      title : "First name"
+      title : "Email",
+     render :(text,record)=>(
+      <span>{record.email}</span>
+     )
+      
     },
-    {
-      title : "First name"
-    }
+    
   ]
+
+
 
 
   useEffect(()=>{
@@ -97,8 +107,10 @@ export default function ApplyPlayerDetails() {
         <p>status: {details.status}</p> */}
 
       
-
-        <Table columns={columns}  />
+        
+        <Table columns={Fcolumns} dataSource={userData} />
+      
+        
 
    {/* Handle aprove button and delete */}
         {
