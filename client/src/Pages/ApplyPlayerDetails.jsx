@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LayoutHome from '../Components/LayoutHome'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Table, message } from 'antd';
+import { Col, Form, Input, Row, Table, message,Spin } from 'antd';
 import axios from 'axios';
 
 export default function ApplyPlayerDetails() {
@@ -12,7 +12,7 @@ export default function ApplyPlayerDetails() {
   const details = location.state.record;
 
 
-  // handle approve status
+  // handle approve button
  const handleApprove = async(recordId , status)=>{
      
   console.log(recordId,status);
@@ -21,6 +21,7 @@ export default function ApplyPlayerDetails() {
     try {
       const approve = await axios.post("http://localhost:8080/api/v1/admin/changeAccountStatus", {doctorId : recordId , status : status})
       console.log(approve);
+      
       navigate("/get-all-notification")
 
     } catch (error) {
@@ -29,7 +30,7 @@ export default function ApplyPlayerDetails() {
  }
 
 
-  // handle Delete status
+  // handle Delete button
  const handleDelete = async(recordId , status)=>{
      
   console.log(recordId,status);
@@ -43,6 +44,33 @@ export default function ApplyPlayerDetails() {
        console.log(error);
     }
  }
+
+
+  // Handle pending button
+  const handlePending = async(recordId , status)=>{
+     try {
+      navigate("/get-all-notification")
+      
+     } catch (error) {
+       message("Error while occure executing Handle pending status")
+     }
+  }
+
+
+  const columns = [
+    {
+      title : "First name",
+      render :(text,record)=>{
+         <span>kamalalala</span>
+      }
+    },
+    {
+      title : "First name"
+    },
+    {
+      title : "First name"
+    }
+  ]
 
 
   return (
@@ -60,6 +88,9 @@ export default function ApplyPlayerDetails() {
         <p>status: {details.status}</p>
 
 
+
+        <Table columns={columns} />
+
    {/* Handle aprove button and delete */}
         {
         
@@ -69,13 +100,18 @@ export default function ApplyPlayerDetails() {
          
         :
 
-        <button className="btn btn-danger" onClick={() => handleDelete(details._id)}> Delete </button>
+        <button className="btn btn-success" disabled = {true}> Approved </button>
         
       
          }
 
          {
-                  <button className="btn btn-danger" onClick={() => handleDelete(details._id)}> pending </button>
+                  <button className="btn btn-danger" onClick={() => handleDelete(details._id)}> Delete </button>
+
+         }
+
+         {
+                  <button className="btn btn-danger" onClick={() => handlePending()}> pending </button>
 
          }
         
