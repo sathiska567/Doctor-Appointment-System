@@ -9,6 +9,7 @@ import ViewPlayer from "./Pages/AcceptPlayer";
 import NotificationPage from "./Pages/NotificationPage";
 import Doctors from "./Pages/admin/Doctor";
 import ApplyPlayerDetails from "./Pages/ApplyPlayerDetails";
+import Shuffle from "./Components/Shuffle/Shuffle";
 function App() {
   return (
     <>
@@ -62,6 +63,13 @@ function App() {
           <Route path="/get-all-notification" element={
              <ProtectedRoute>
                <Doctors />
+             </ProtectedRoute>
+          } />
+
+          {/* Shuffle the items */}
+          <Route path="/shuffle" element={
+             <ProtectedRoute>
+                <Shuffle />
              </ProtectedRoute>
           } />
 
