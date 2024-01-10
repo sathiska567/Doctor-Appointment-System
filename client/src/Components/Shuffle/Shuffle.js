@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Shuffle() {
 
@@ -33,6 +33,10 @@ const ShuffleData = () => {
         }
         setShuffledNewArray(shuffledArray)
     }
+
+    useEffect(()=>{
+      ShuffleData();
+    },[])
     
 
     return (
