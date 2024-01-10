@@ -9,6 +9,7 @@ import ViewPlayer from "./Pages/AcceptPlayer";
 import NotificationPage from "./Pages/NotificationPage";
 import Doctors from "./Pages/admin/Doctor";
 import ApplyPlayerDetails from "./Pages/ApplyPlayerDetails";
+import Shuffle from "./Pages/Shuffle/Shuffle";
 function App() {
   return (
     <>
@@ -63,6 +64,12 @@ function App() {
              <ProtectedRoute>
                <Doctors />
              </ProtectedRoute>
+          } />
+
+          <Route path="/shuffle" element={
+             
+              <Shuffle />
+
           } />
 
 
